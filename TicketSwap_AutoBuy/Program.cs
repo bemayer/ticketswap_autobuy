@@ -39,7 +39,7 @@ namespace TicketSwapAutoBuy
             List<string> oldurlList = new List<string>();
             List<string> newurlList = new List<string>();
             List<string> urlList = new List<string>();
-            int i = 0;
+            int tryNb = 0;
             while (newurlList.Count.Equals(0))
             {
                 System.Threading.Thread.Sleep(1000);
@@ -59,7 +59,7 @@ namespace TicketSwapAutoBuy
                     break;
                 }
                 newurlList = urlList.Except(oldurlList).ToList();
-                i++;
+                tryNb++;
             }
 
             //add tickets to basket
