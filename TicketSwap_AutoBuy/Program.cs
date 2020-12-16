@@ -46,20 +46,10 @@ namespace TicketSwapAutoBuy
                 HtmlDocument doc = web.Load(eUrl);
                 var links = doc.DocumentNode.Descendants("a").Where(d => d.OuterHtml.Contains("offerurl"));
                 if (oldurlList.Count.Equals(0))
-                {
-                    foreach (var link in links) { oldurlList.Add(link.GetAttributeValue("href", "no address")); }
-                }
-                else
-                {
-                    urlList.Clear();
-                    foreach (var link in links) { urlList.Add(link.GetAttributeValue("href", "no address")); }
-                }
-                if (urlList.Count.Equals(0) && i > 0)
-                {
-                    break;
-                }
+                    foreach (var link in links) {oldurlList.Add(link.GetAttributeValue("href", "no address"));}
+                urlList.Clear();
+                foreach (var link in links) {urlList.Add(link.GetAttributeValue("href", "no address"));}
                 newurlList = urlList.Except(oldurlList).ToList();
-                tryNb++;
             }
 
             //add tickets to basket
